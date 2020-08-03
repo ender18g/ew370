@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autpilot Controller</title>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="style.css">
+  <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container-fluid h-100">
+    <div class="row h-100">
+      <div class="col-2 h-100">
+      
+        <div id='throttlePanel'
+          class='h-100 d-flex flex-column justify-content-center align-items-center '>
+          <input id='throttleSlider' style="height: 50vh" type="range" min='0' max='100' value='0' orient='vertical'>
+          <h4>Collective</h4>
+        </div>
+      </div>
+
+      <div class="col-8 h-100">
+
+        <div id="controlPanel" class="text-center mx-auto rounded">
+          <label for="desiredAltSlider">Desired Altitude:</label>
+          <h4><strong id='desiredAltText'>1500</strong>
+            <input id='desiredAltSlider' type="range" min='0' max='5000' step='100' value='1500'></h4>
+            <label for="controllerEqn">Controller Equation</label>
+            <input class="w-50" type="text" id="controllerEqn" value='55+(.1*(y-s[0])+.1*(s[1]-s[0])+.1*e)'>
+            <h5>Autopilot Status: <button id='autoPilotBtn' class="btn btn-danger shadow-lg">
+            OFF</button></h5>
+        </div>
+
+        <div id='directionsPanel' class="mx-auto my-3 p-5 bg-light shadow-lg rounded">
+
+          <h3>Welcome to the Autopilot Simulator!</h3>
+          <p>To get started, use the following steps:</p>
+          <ul>
+            <li>Fly the helicopter manually using the <strong>Collective Slider</strong></li>
+            <li>Put in a desired <strong>Altitude</strong></li>
+            <li>Customize your controller equation</li>
+            <ul>
+              <li>Use <strong>y</strong> to reference your desired altitude</li>
+              <li>Use <strong>s[0]</strong> to reference the altimeter's current reading</li>
+              <li>Use <strong>s[1]</strong> to reference the altimeter's previous reading</li>
+              <li>Use <strong>e</strong> to reference the sum of your error from the desired input over the past second</li>
+              <li>Click the <strong>Autopilot Status Button</strong> to turn the autopilot ON.
+              </li>
+            </ul>
+            <li>To see a plot of your controller's reponse, click <strong>Create Plot</strong></li>
+            <li>More Conroller Hints:</li>
+            <ul><strong>kp*y-s[0]</strong> provides <strong>proportional control</strong></ul>
+            <ul><strong>ki*e</strong> provides <strong>integral control</strong></ul>
+            <ul><strong>kd*(s[1]-s[0])</strong> provides <strong>derivative control</strong></ul>
+          </ul>
+          <div class="text-center">
+            <button id='hideDirBtn' class="mx-auto btn btn-primary shadow-lg">Hide Directions</button>
+          </div>
+        </div>
+        <div class="h-75 d-none shadow-lg"id="plotPanel">
+          Plot Here
+        </div>
+
+        <div id='skyPanel' class='h-75'>
+
+        </div>
+      </div>
+
+
+
+      <div class="col-2 h-100">
+        <div id="instrumentPanel" class="p-3 text-center h-100 d-flex flex-column justify-content-center align-items-center">
+        <h4>Altitude: <strong id="altitudeText">0</strong></h4>
+        <br><br>
+        <label for="disturbanceSlider">Disturbance:</label>
+        <input id='disturbanceSlider' type="range" min="0" max="200" value='10'>
+        <br><br><br>
+        <button id="plotBtn" class='btn btn-warning shadow-lg'>Create Plot</button>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+
+<script>
+
+  setTimeout(() => {
+    var script = document.createElement('script');
+    script.src = "autopilot.js";
+    document.getElementsByTagName('head')[0].appendChild(script);
+  },500)
+
+
+</script>
+
+</html>

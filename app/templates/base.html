@@ -5,38 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>USNA SUAS</title>
+    <title>EW481X</title>
     <link rel="stylesheet" href="/static/libraries/bootstrap.min.css">
     <link rel="stylesheet" href="/static/style.css">
     <script src="/static/libraries/jquery-3.4.1.min.js"></script>
     <script src="/static/libraries/popper.min.js"></script>
     <script src="/static/libraries/bootstrap.min.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-primary p-3">
         <a class="navbar-brand" href="/">
-                <img src="/static/crest.png" id="usna_crest" class='image-fluid'alt="">
+            <img src="/static/images/crest.png" id="usna_crest" class='image-fluid' alt="">
         </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-          </button>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <!-- <li class="nav-item {%if request.path == '/schedule'%}active{%endif%}">
                     <a class="nav-link" href="/schedule">Schedule</a>
                 </li> -->
                 <li class="nav-item {%if request.path == url_for('index')%}active{%endif%}"">
-                    <a class="nav-link" href="{{url_for('index')}}">Home</a>
+                    <a class=" nav-link" href="{{url_for('index')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a target="_blank"class="nav-link" href="https://usna.blackboard.com">Blackboard</a>
+                    <a target="_blank" class="nav-link" href="https://usna.blackboard.com">Blackboard</a>
                 </li>
             </ul>
             <span class="navbar-text">
-                <h5 id='navy-suas'>EW481X</h5>
-              </span>
+                <h5 id='courseTitle'>EW481X</h5>
+            </span>
         </div>
     </nav>
 
@@ -55,4 +60,5 @@
 
 
 </body>
+
 </html>
