@@ -89,19 +89,19 @@
         "title": "Edge Detection",
         "link": "/static/cv-examples/EdgeDetection/index.html",
         "description": "Interactive tool that uses your webcam to determine the edges of objects",
-        "image": "/static/images/security_cameras.jpg"
+        "image": "/static/images/abstract-net2.jpg"
       },
       {
         "title": "Face Detection",
         "link": "/static/cv-examples/FaceDetection/index.html",
-        "description": "Find faces in a frame",
+        "description": "Find faces in a provided image.",
         "image": "/static/images/security_cameras.jpg"
       },
       {
         "title": "Thresholding",
         "link": "/static/cv-examples/Thresholding/index.html",
         "description": "Adjust a threshold value to see the impact on the image",
-        "image": "/static/images/security_cameras.jpg"
+        "image": "/static/images/abstract-pins.jpg"
       },
       {
         "title": "Optical Flow",
@@ -158,17 +158,12 @@
     "image": "/static/images/circuit.jpg",
     "resources": [
       {
-        "title": "Lab 1",
-        "link": "http://www.google.com",
-        "description": "Sample interactive lab link",
-        "image": "/static/images/cannon.jpg"
-      },
-      {
-        "title": "lab 2",
-        "link": "http://www.google.com",
-        "description": "Another interactive lab link",
-        "image": "/static/images/ground_robot.jpg"
+        "title": "Building a Neural Network for Jodel",
+        "link": "brain",
+        "description": "Interactively contribute data, label the data, and train a LSTM Neural Network for Jodel sentiment analysis",
+        "image": "/static/images/abstract-net.jpg"
       }
+
     ]
   },
   {
@@ -198,16 +193,10 @@
     "image": "/static/images/boxing_brains.jpg",
     "resources": [
       {
-        "title": "Lab 1",
-        "link": "http://www.google.com",
-        "description": "Sample interactive lab link",
-        "image": "/static/images/explosion.jpg"
-      },
-      {
-        "title": "lab 2",
-        "link": "http://www.google.com",
-        "description": "Another interactive lab link",
-        "image": "/static/images/drone_beach.jpg"
+        "title": "Building a Neural Network for Jodel",
+        "link": "brain",
+        "description": "Interactively contribute data, label the data, and train a LSTM Neural Network for Jodel sentiment analysis",
+        "image": "/static/images/abstract-net.jpg"
       }
     ]
   }

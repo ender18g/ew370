@@ -60,7 +60,7 @@ const generateMainCard = (tool) => {
   <img class="card-img-top" src="${tool.image}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">${tool.title}</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text">${tool.description}</p>
   </div>
   `;
 
@@ -82,7 +82,7 @@ const generateJumbotron = (lesson) => {
   let domString = `
   <div id="jumboTitle" class="container text-black">
     <h1 class="display-5">${lesson.title}</h1>
-    <p class="lead">${lesson.description}</p>
+    <p class="lead"></p>
   </div>
   `;
 
@@ -123,6 +123,11 @@ axios.get('/static/content.json')
     content = response.data;
     generateMenu(content);
   });
+
+
+setTimeout(()=>{
+    document.querySelector('.list-group-item').click();
+},100)
 
 
 

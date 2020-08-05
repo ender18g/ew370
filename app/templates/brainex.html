@@ -1,0 +1,61 @@
+{%extends "base.html"%}
+
+
+{%block content%}
+
+<h3 class="text-center">Supervised Neural Network for Jodels</h3>
+<h5 class="text-center">A LSTM (Long Short Term Memory) Supervised Learning Lab</h5>
+
+<form method="POST">
+  <div class="form-row">
+    <div class="col-9">
+      <input name="comment" type="text" class="form-control" placeholder="jodel post">
+    </div>
+    <div class="col-2">
+      <select name="output" type="text" class="custom-select form-control" placeholder="output">
+        <option value="happy">happy</option>
+        <option value="sad">sad</option>
+      </select>
+    </div>
+    <div class="col-1">
+      <button id='addBtn' type="submit" class="btn btn-primary">Add</button>
+    </div>
+  </div>
+</form>
+
+<div class="container text-center">
+
+  <button id="updateDataBtn" class="my-3 btn btn-success">Refresh Data</button>
+
+</div>
+
+<div id="trainingDiv" class="my-3 container">
+
+
+</div>
+
+<div class="container my-3 text-center">
+  <button id="trainBtn" class="btn btn-danger">Train Network</button>
+  <div class="row my-3">
+    <div class="input-group mb-3">
+      <input id="testText" type="text" class="form-control" value="I'm really enjoying my time at the Academy">
+      <div class="input-group-append">
+        <button id="testBtn" class="btn btn-success" type="button">Test Sentiment</button>
+      </div>
+    </div>
+
+
+
+  </div>
+  <h1 id='brainOutput' class='text-warning'></h1>
+  <h4 id='counter' class='text-primary'></h4>
+  <textarea id="JSONTextArea" cols="100" rows="10">Insert pre-trained JSON net here</textarea>
+</div>
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/static/brain-examples/brain-browser.min.js"></script>
+<script src="/static/brain-examples/brainJS.js"></script>
+
+
+{% endblock %}
