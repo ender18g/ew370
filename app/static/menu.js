@@ -51,7 +51,7 @@ const generateMainCard = (tool) => {
   let newElement = document.createElement('a');
   newElement.href=tool.link;
   newElement.target="_blank";
-  newElement.classList.add('card');
+  newElement.classList.add('card','w-25');
   if (tool.image==="any"){
 
   }
@@ -91,7 +91,7 @@ const generateJumbotron = (lesson) => {
   
   // now make a card deck below the jumbotron
   let divElement = document.createElement('div');
-  divElement.classList.add("card-deck","mt-4");
+  divElement.classList.add("card-deck","m-5");
   divElement.id = "cardDeckDiv";
   mainDiv.append(divElement);
 }
@@ -128,9 +128,6 @@ axios.get('/static/content.json')
 setTimeout(()=>{
     document.querySelector('.list-group-item').click();
 },100)
-
-
-
 
 
 
