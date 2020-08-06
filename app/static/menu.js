@@ -15,11 +15,11 @@ const checkChrome = () => {
 
 
 // generate each menu item
-const generateMenuItem = (lesson,i) => {
+const generateMenuItem = (lesson, i) => {
 
   let newElement = document.createElement("a");
   newElement.classList.add('list-group-item', 'list-group-item-action');
-  newElement.index=i;
+  newElement.index = i;
   newElement.innerText = `${lesson.title}`;
   // add the event listener that listens for a click on the week
   newElement.addEventListener('click', function () {
@@ -37,7 +37,7 @@ const generateMenuItem = (lesson,i) => {
 const generateMenu = (content) => {
   let i = 0;
   for (lesson of content) {
-    generateMenuItem(lesson,i);
+    generateMenuItem(lesson, i);
     i++;
   }
 
@@ -49,10 +49,10 @@ const generateMenu = (content) => {
 //generate each individual card
 const generateMainCard = (tool) => {
   let newElement = document.createElement('a');
-  newElement.href=tool.link;
-  newElement.target="_blank";
-  newElement.classList.add('card','w-25');
-  if (tool.image==="any"){
+  newElement.href = tool.link;
+  newElement.target = "_blank";
+  newElement.classList.add('card', 'col-lg-4');
+  if (tool.image === "any") {
 
   }
 
@@ -65,7 +65,7 @@ const generateMainCard = (tool) => {
   `;
 
   newElement.innerHTML = domString;
-  document.querySelector('#cardDeckDiv').append(newElement);
+  document.querySelector('#cardRow').append(newElement);
 }
 
 
@@ -74,26 +74,21 @@ const generateMainCard = (tool) => {
 
 //generate the jumbotron
 const generateJumbotron = (lesson) => {
-  mainDiv.innerHTML = "";
-  let newElement = document.createElement('div');
-  newElement.classList.add("jumbotron","jumbotron-fluid","shadow","rounded");
-  newElement.style.backgroundImage=`url(${lesson.image})`
-  newElement.id="jumbotronDiv";
-  let domString = `
-  <div id="jumboTitle" class="container text-black">
-    <h1 class="display-5">${lesson.title}</h1>
-    <p class="lead"></p>
+  mainDiv.innerHTML = `
+  <div style="background-image:url(${lesson.image})"
+  id="jumbotronDiv"
+  class="jumbotron jumbotron-fluid shadow rounded">
+    <div id="jumboTitle" class="container text-black">
+      <h1 class="display-5">${lesson.title}</h1>
+      <p class="lead"></p>
+    </div>
   </div>
-  `;
+  <div class="container-fluid">
+    <div id="cardRow" class="my-3 row">
+    </div>
+  </div>`;
 
-  newElement.innerHTML = domString;
-  mainDiv.append(newElement);
-  
   // now make a card deck below the jumbotron
-  let divElement = document.createElement('div');
-  divElement.classList.add("card-deck","m-5");
-  divElement.id = "cardDeckDiv";
-  mainDiv.append(divElement);
 }
 
 
@@ -103,11 +98,11 @@ const generateJumbotron = (lesson) => {
 
 // generate the jumbotron and main cards
 const generateMain = async (lesson) => {
-    generateJumbotron(lesson);
-    for (let resource of lesson.resources) {
-      generateMainCard(resource);
-    }
+  generateJumbotron(lesson);
+  for (let resource of lesson.resources) {
+    generateMainCard(resource);
   }
+}
 
 
 
@@ -125,9 +120,9 @@ axios.get('/static/content.json')
   });
 
 
-setTimeout(()=>{
-    document.querySelector('.list-group-item').click();
-},100)
+setTimeout(() => {
+  document.querySelector('.list-group-item').click();
+}, 100)
 
 
 
