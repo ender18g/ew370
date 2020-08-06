@@ -48,20 +48,16 @@ const generateMenu = (content) => {
 
 //generate each individual card
 const generateMainCard = (tool) => {
-  let newElement = document.createElement('a');
-  newElement.href = tool.link;
-  newElement.target = "_blank";
-  newElement.classList.add('card', 'col-lg-4');
-  if (tool.image === "any") {
-
-  }
+  let newElement = document.createElement('div');
+  newElement.classList.add('card');
 
   let domString = `
+  <a class="cardLink" href="${tool.link}"> 
   <img class="card-img-top" src="${tool.image}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">${tool.title}</h5>
     <p class="card-text">${tool.description}</p>
-  </div>
+  </div></a>
   `;
 
   newElement.innerHTML = domString;
@@ -84,7 +80,7 @@ const generateJumbotron = (lesson) => {
     </div>
   </div>
   <div class="container-fluid">
-    <div id="cardRow" class="my-3 row">
+    <div id="cardRow" class="my-3 card-columns">
     </div>
   </div>`;
 

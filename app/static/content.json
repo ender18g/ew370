@@ -197,6 +197,12 @@
         "link": "brain",
         "description": "Interactively contribute data, label the data, and train a LSTM Neural Network for Jodel sentiment analysis",
         "image": "/static/images/abstract-net.jpg"
+      },
+      {
+        "title": "Flappy Learn",
+        "link": "static/FlappyLearning/index.html",
+        "description": "Visualize the creation and training of for an algorthm learning to play Flappy Bird",
+        "image": "/static/images/FlappyLearn.png"
       }
     ]
   }

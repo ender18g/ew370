@@ -22,13 +22,7 @@
   text-shadow: black 0.1em 0.1em 0.1em;}
 
 
-  a.card{
+  a.cardLink{
     text-decoration: none;
     color: black;
   }
-/* 
-  .card-img-top{
-    max-height: 200px;
-    width: auto;
-
-  } */
