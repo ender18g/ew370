@@ -81,7 +81,7 @@
   },
   {
     "id":"lesson5",
-    "title": "Computer Vison",
+    "title": "Computer Vision",
     "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
     "image": "/static/images/circuit.jpg",
     "resources": [
