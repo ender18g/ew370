@@ -6,7 +6,7 @@
 <h3 class="text-center">Supervised Neural Network for Jodels</h3>
 <h5 class="text-center">A LSTM (Long Short Term Memory) Supervised Learning Lab</h5>
 
-<form method="POST">
+<form action="mlData" method="POST">
   <div class="form-row">
     <div class="col-9">
       <input name="comment" type="text" class="form-control" placeholder="jodel post">
@@ -22,10 +22,12 @@
     </div>
   </div>
 </form>
+<h5 id="confirm_add" class=" mt-1 text-center text-primary d-none">Added</h5>
 
 <div class="container text-center">
 
   <button id="updateDataBtn" class="my-3 btn btn-success">Refresh Data</button>
+  <button id="showAllBtn" class="my-3 btn btn-warning">Show All Data</button>
 
 </div>
 
@@ -35,6 +37,8 @@
 </div>
 
 <div class="container my-3 text-center">
+  <label for="iterations">Training Iterations:</label>
+  <input name='iterations' value='600' type="text" id="iterationsInput">
   <button id="trainBtn" class="btn btn-danger">Train Network</button>
   <div class="row my-3">
     <div class="input-group mb-3">
