@@ -200,7 +200,7 @@
       },
       {
         "title": "Flappy Learn",
-        "link": "static/FlappyLearning/index.html",
+        "link": "static/Flappy/index.html",
         "description": "Visualize the creation and training of for an algorthm learning to play Flappy Bird",
         "image": "/static/images/FlappyLearn.png"
       }
