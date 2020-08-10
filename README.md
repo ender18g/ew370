@@ -13,9 +13,11 @@ https://navyrobotics.org
 
 
 ##### 2) Install requirements
-`cd ew370`
-`source venv/bin/activate`
-`pip3 install -r requirements.txt`
+```
+cd ew370
+source venv/bin/activate
+pip3 install -r requirements.txt
+```
 
 ##### 3) Run Flask Server
 `python3 ew370.py`
