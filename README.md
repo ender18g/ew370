@@ -6,7 +6,11 @@ https://navyrobotics.org
 
 
 1) Create VENV
-```python3 -m venv venv'''
+'''
+python3 -m venv venv
+'''
+
+
 
 2) Install requirements
 '''cd ew370
