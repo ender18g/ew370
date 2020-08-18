@@ -15,12 +15,20 @@
 
 .jumbotron {
   margin-bottom: 0px;
-  background-position: 50%;
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
   text-shadow: black 0.1em 0.1em 0.1em;}
 
+  .card:hover {
+    opacity: .85;
+    box-shadow: 0px 8px 6px -6px rgba(0, 0, 0, .9);
+  }
+
+  .card{
+    transition: 500ms;
+  }
 
   a.cardLink{
     text-decoration: none;

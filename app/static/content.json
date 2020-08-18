@@ -3,21 +3,34 @@
     "id":"lesson1",
     "title": "Intro to Autonomy",
     "description": "Introduction to autonomous systems and tasks that are targets for autonomy",
-    "image": "/static/images/circuit.jpg",
+    "image": "/static/images/drone_mountains.jpg",
     "resources": [
       {
         "title": "Are AI-Powered Killer Robots Inevitable?",
         "link": "https://www.wired.com/story/artificial-intelligence-military-robots/",
         "description": "What does AI mean for the future of warfare?",
         "image": "/static/images/wired.png"
+      },
+      {
+        "title": "The Pentagon's AI Chief Prepares for Battle",
+        "link": "https://www.wired.com/story/pentagon-ai-chief-prepares-for-battle/",
+        "description": "What does AI mean for the future of warfare?",
+        "image": "/static/images/wired.png"
+      },
+      {
+        "title": "Inside the Pentagon’s Plan to Win Over Silicon Valley's AI Experts",
+        "link": "https://www.wired.com/story/inside-the-pentagons-plan-to-win-over-silicon-valleys-ai-experts/",
+        "description": "What does AI mean for the future of warfare?",
+        "image": "/static/images/wired.png"
       }
+      
     ]
   },
   {
     "id":"lesson2",
     "title": "Control and Early Autonomy",
     "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
-    "image": "/static/images/circuit.jpg",
+    "image": "/static/images/robot_arm2.jpg",
     "resources": [
       {
         "title": "Linkbot Lab",
@@ -43,13 +56,13 @@
         "title": "Autopilot Simulator",
         "link": "/static/control-examples/autopilot.html",
         "description": "Try maintaining altititude of a helicopter and design an autopilot controller to automate the task.",
-        "image": "/static/images/circuit.jpg"
+        "image": "/static/images/autopilot.png"
       },
       {
         "title": "CIWS Simulator",
         "link": "/static/control-examples/index.html",
         "description": "Design a proportional controller for a CIWS (Close in Weapons System) motor so that you can point at and shoot an enemy helicopter",
-        "image": "/static/images/colors.jpg"
+        "image": "/static/images/gun.jpg"
       }
     ]
   },
@@ -57,7 +70,7 @@
     "id":"lesson4",
     "title": "Environmental Sensing",
     "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
-    "image": "/static/images/circuit.jpg",
+    "image": "/static/images/abstract-pins.jpg",
     "resources": [
       {
         "title": "Lab 1",
@@ -77,7 +90,7 @@
     "id":"lesson5",
     "title": "Computer Vision",
     "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
-    "image": "/static/images/circuit.jpg",
+    "image": "/static/images/drone_camera.jpg",
     "resources": [
       {
         "title": "Edge Detection",
@@ -109,7 +122,7 @@
     "id":"lesson7",
     "title": "Guidance, Navigation, and Control",
     "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
-    "image": "/static/images/circuit.jpg",
+    "image": "/static/images/yps.jpg",
     "resources": [
       {
         "title": "Lab 1",
