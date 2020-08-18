@@ -1,21 +1,15 @@
 [
   {
     "id":"lesson1",
-    "title": "Levels of Autonomy",
-    "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
+    "title": "Intro to Autonomy",
+    "description": "Introduction to autonomous systems and tasks that are targets for autonomy",
     "image": "/static/images/circuit.jpg",
     "resources": [
       {
-        "title": "Lab 1",
-        "link": "http://www.google.com",
-        "description": "Sample interactive lab link",
-        "image": "/static/images/sub.jpg"
-      },
-      {
-        "title": "lab 2",
-        "link": "http://www.google.com",
-        "description": "Another interactive lab link",
-        "image": "/static/images/yps.jpg"
+        "title": "Are AI-Powered Killer Robots Inevitable?",
+        "link": "https://www.wired.com/story/artificial-intelligence-military-robots/",
+        "description": "What does AI mean for the future of warfare?",
+        "image": "/static/images/wired.png"
       }
     ]
   },
@@ -26,16 +20,16 @@
     "image": "/static/images/circuit.jpg",
     "resources": [
       {
-        "title": "Autopilot Simulator",
-        "link": "/static/control-examples/autopilot.html",
-        "description": "Try maintaining altititude of a helicopter and design an autopilot controller to automate the task.",
-        "image": "/static/images/circuit.jpg"
+        "title": "Linkbot Lab",
+        "link": "https://roboblockly.com/curriculum/hourofcode/obstaclecourse/6.php",
+        "description": "Program this open-loop robot to navigate an obstacle course",
+        "image": "/static/images/linkbot.png"
       },
       {
-        "title": "CIWS Simulator",
-        "link": "/static/control-examples/index.html",
-        "description": "Design a proportional controller for a CIWS (Close in Weapons System) motor so that you can point at and shoot an enemy helicopter",
-        "image": "/static/images/colors.jpg"
+        "title": "Draw.io",
+        "link": "https://draw.io",
+        "description": "An easy web-based program to quickly draw block diagrams",
+        "image": "/static/images/draw.png"
       }
     ]
   },
