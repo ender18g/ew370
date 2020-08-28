@@ -18,8 +18,8 @@ const disturbanceSlider = document.querySelector('#disturbanceSlider');
 const controllerEqn = document.querySelector('#controllerEqn');
 const plotBtn = document.querySelector("#plotBtn");
 const plotPanel = document.querySelector('#plotPanel');
-const directionsPanel=document.querySelector('#directionsPanel');
-const hideDirBtn=document.querySelector('#hideDirBtn');
+const directionsPanel = document.querySelector('#directionsPanel');
+const hideDirBtn = document.querySelector('#hideDirBtn');
 
 
 const width = skyPanel.clientWidth;
@@ -66,13 +66,18 @@ Engine.run(engine);
 
 Render.run(render);
 
-plotLength = 5;
+
+
+// length of plotting in seconds
+plotLength = 7;
+// autopilot initiall OFF
 let autoPilotOn = false;
+//array of altitudes full of 0s
 let altArray = Array(100 * plotLength).fill(0);
-let errArray = Array(1000).fill(0);
+//error from last 1 second
+let errArray = Array(10000).fill(0);
 heloBody.frictionAir = .03;
 let showPlot = false;
-//plot length in seconds
 
 
 let helo = {
@@ -94,8 +99,11 @@ let helo = {
     );
   },
   applyController() {
+    //get the desired altitude from slider & put in Text
     const y = parseInt(desiredAltSlider.value);
     desiredAltText.innerText = y;
+
+    //get the helos current altitude, put it in the array
     const currentAlt = this.getAltitude();
     altArray.pop();
     altArray.unshift(currentAlt);
@@ -105,17 +113,25 @@ let helo = {
       return acc += val / errArray.length;
     })
     s = altArray;
-    throttleSlider.value = parseInt(eval(controllerEqn.value));
+    //set the throttle per the controller output
+    if (autoPilotOn) {
+      //value='55+(.1*(y-s[0])+.1*(s[1]-s[0])+.1*e)
+      //get gain values
+      let Kt = parseFloat(document.querySelector("#throttle-gain").value);
+      let Kp = parseFloat(document.querySelector("#proportional-gain").value);
+      let Ki = parseFloat(document.querySelector("#integral-gain").value);
+      let Kd = parseFloat(document.querySelector("#derivative-gain").value);
+
+      throttleSlider.value = Kt+(Kp*(y-s[0])+Kd*(s[1]-s[0])+Ki*e);
+    }
+
 
   }
 }
 
-
 //continuously applies throttle force
 setInterval(() => {
-  if (autoPilotOn) {
-    helo.applyController();
-  }
+  helo.applyController();
   helo.applyForce();
 }, 10)
 
@@ -138,15 +154,41 @@ autoPilotBtn.addEventListener('click', () => {
 
 });
 
+let creating_plot = false;
+// on the "create plot" button clicking
 plotBtn.addEventListener('click', () => {
+  if(creating_plot){
+    console.log('XX Plotting'); 
+    return 0;
+  } 
   if (!showPlot) {
-    showPlot=true;
+    //you want to initiate the plot, so make button show red
+    creating_plot=true;
+    showPlot = true;
     plotBtn.classList.add('bg-danger');
     plotBtn.classList.remove('bg-warning');
+    throttleSlider.value=0;
     if (autoPilotOn) {
+      //if the autopilot is alread on, turn it off
       autoPilotBtn.click();
     }
-    plotBtn.innerText = plotLength + 1;
+    //clear the plot panel and kill throttle to initiate
+    plotPanel.innerHTML = '';
+    throttleSlider.value = 0;
+    //if manual fly isnt checked, then turn on auto pilot
+    if(!document.querySelector("#manualFly").checked){
+      autoPilotBtn.click();
+      plotLength=7;
+      altArray = Array(100 * plotLength).fill(0);
+    } 
+    //else change the plot length to longer for manual flying
+    else{
+      plotLength=15;
+      altArray = Array(100 * plotLength).fill(0);
+    }
+    // setup the button to start coutning down timer
+    plotBtn.innerText = plotLength;
+    //make the countdownhappen on the button
     let countDownID = setInterval(() => {
       plotBtn.innerText = parseInt(plotBtn.innerText) - 1;
       if (plotBtn.innerText === '0') {
@@ -154,31 +196,34 @@ plotBtn.addEventListener('click', () => {
         plotBtn.innerText = 'Remove Plot';
       }
     }, 1000);
-    plotPanel.innerHTML = '';
-    throttleSlider.value = 0;
+    //autoPilotBtn.click();
+    // when you are done collecting data, create the plot!
     setTimeout(() => {
-      autoPilotBtn.click();
-      setTimeout(() => {
-        plotPanel.classList.remove('d-none')
-        skyPanel.classList.remove('d-none')
-        makePlot(parseInt(desiredAltSlider.value), altArray.reverse(), plotPanel)
-      }
-        , plotLength * 1000);
-    }, 1500);
+      creating_plot=false;
+      console.log(creating_plot)
+      plotPanel.classList.remove('d-none');
+      skyPanel.classList.remove('d-none');
+      makePlot(parseInt(desiredAltSlider.value), altArray.reverse(), plotPanel);
+    }, plotLength * 1000);
+
   }
-  else{
-    showPlot=false;
+  //otherwise, if you are already seeing the plot, just remove it
+  else {
+    //if autopilot on, turn it off!
+    if(autoPilotOn) autoPilotBtn.click();
+    throttleSlider.value=0;
+    showPlot = false;
     plotPanel.classList.add('d-none');
     plotBtn.classList.remove('bg-danger');
     plotBtn.classList.add('bg-warning');
 
-    plotBtn.innerText='Create Plot';
+    plotBtn.innerText = 'Create Plot';
   }
 });
 
 
-hideDirBtn.addEventListener('click',()=>{
-directionsPanel.classList.add('d-none');
+hideDirBtn.addEventListener('click', () => {
+  directionsPanel.classList.add('d-none');
 });
 
 
@@ -201,7 +246,7 @@ const makePlot = (requestedInput, myArray, myDiv) => {
     x: timeArray,
     y: inputArray,
     type: 'scatter',
-    name: 'Desired Input',
+    name: 'Desired Altitude',
     line: {
       dash: 'dot',
       width: 3,

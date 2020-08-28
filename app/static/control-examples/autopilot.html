@@ -28,9 +28,8 @@
   <div class="container-fluid h-100">
     <div class="row h-100">
       <div class="col-2 h-100">
-      
-        <div id='throttlePanel'
-          class='h-100 d-flex flex-column justify-content-center align-items-center '>
+
+        <div id='throttlePanel' class='h-100 d-flex flex-column justify-content-center align-items-center '>
           <input id='throttleSlider' style="height: 50vh" type="range" min='0' max='100' value='0' orient='vertical'>
           <h4>Collective</h4>
         </div>
@@ -42,10 +41,21 @@
           <label for="desiredAltSlider">Desired Altitude:</label>
           <h4><strong id='desiredAltText'>1500</strong>
             <input id='desiredAltSlider' type="range" min='0' max='5000' step='100' value='1500'></h4>
-            <label for="controllerEqn">Controller Equation</label>
-            <input class="w-50" type="text" id="controllerEqn" value='55+(.1*(y-s[0])+.1*(s[1]-s[0])+.1*e)'>
-            <h5>Autopilot Status: <button id='autoPilotBtn' class="btn btn-danger shadow-lg">
-            OFF</button></h5>
+          <label for="controllerEqn">Controller Equation:</label>
+          <!-- <input class="w-50" type="text" id="controllerEqn" value='55+(.1*(y-s[0])+.1*(s[1]-s[0])+.1*e)'> -->
+          <div style="border: 2px solid grey; border-radius: 5px;"
+            class="p-3 input-group d-flex justify-content-between mb-3">
+            <div>Neutral Collective Setting:<input style="width:60px;" class="mx-2" type="text" value="50"
+                id="throttle-gain" /></div>
+            <div>Proportional Gain:<input style="width:60px;" class="mx-2" type="text" value="0"
+                id="proportional-gain" /></div>
+            <div>Integral Gain:<input style="width:60px;" class="mx-2" type="text" value="0" id="integral-gain" /></div>
+            <div>Derivative Gain:<input style="width:60px;" class="mx-2" type="text" value="0" id="derivative-gain" />
+            </div>
+
+          </div>
+          <h5>Autopilot Status: <button id='autoPilotBtn' class="btn btn-danger shadow-lg">
+              OFF</button></h5>
         </div>
 
         <div id='directionsPanel' class="mx-auto my-3 p-5 bg-light shadow-lg rounded">
@@ -60,7 +70,8 @@
               <li>Use <strong>y</strong> to reference your desired altitude</li>
               <li>Use <strong>s[0]</strong> to reference the altimeter's current reading</li>
               <li>Use <strong>s[1]</strong> to reference the altimeter's previous reading</li>
-              <li>Use <strong>e</strong> to reference the sum of your error from the desired input over the past second</li>
+              <li>Use <strong>e</strong> to reference the sum of your error from the desired input over the past second
+              </li>
               <li>Click the <strong>Autopilot Status Button</strong> to turn the autopilot ON.
               </li>
             </ul>
@@ -74,7 +85,7 @@
             <button id='hideDirBtn' class="mx-auto btn btn-primary shadow-lg">Hide Directions</button>
           </div>
         </div>
-        <div class="h-75 d-none shadow-lg"id="plotPanel">
+        <div class="h-75 d-none shadow-lg" id="plotPanel">
           Plot Here
         </div>
 
@@ -86,14 +97,21 @@
 
 
       <div class="col-2 h-100">
-        <div id="instrumentPanel" class="p-3 text-center h-100 d-flex flex-column justify-content-center align-items-center">
-        <h4>Altitude: <strong id="altitudeText">0</strong></h4>
-        <br><br>
-        <label for="disturbanceSlider">Disturbance:</label>
-        <input id='disturbanceSlider' type="range" min="0" max="200" value='10'>
-        <br><br><br>
-        <button id="plotBtn" class='btn btn-warning shadow-lg'>Create Plot</button>
-      </div>
+        <div id="instrumentPanel"
+          class="p-3 h-100 d-flex flex-column justify-content-center align-items-center">
+          <h4>Altitude: <strong id="altitudeText">0</strong></h4>
+          <br><br>
+          <label for="disturbanceSlider">Disturbance:</label>
+          <input id='disturbanceSlider' type="range" min="0" max="200" value='10'>
+          <br><br><br>
+
+          <div class="input-group text-center d-flex justify-content-center">
+            <input type="checkbox" class="mx-2" name="manualFly" id="manualFly">
+            <label for="manualFly">Fly Manually</label>
+          </div>
+          <button id="plotBtn" class='btn btn-warning shadow-lg'>Create Plot</button>
+        </div>
+
       </div>
     </div>
   </div>
@@ -108,7 +126,7 @@
     var script = document.createElement('script');
     script.src = "autopilot.js";
     document.getElementsByTagName('head')[0].appendChild(script);
-  },500)
+  }, 500)
 
 
 </script>
