@@ -64,22 +64,10 @@
           <p>To get started, use the following steps:</p>
           <ul>
             <li>Fly the helicopter manually using the <strong>Collective Slider</strong></li>
+            <li>To make it more challenging, consider adding more <strong>Disturbance</strong></li>
             <li>Put in a desired <strong>Altitude</strong></li>
-            <li>Customize your controller equation</li>
-            <ul>
-              <li>Use <strong>y</strong> to reference your desired altitude</li>
-              <li>Use <strong>s[0]</strong> to reference the altimeter's current reading</li>
-              <li>Use <strong>s[1]</strong> to reference the altimeter's previous reading</li>
-              <li>Use <strong>e</strong> to reference the sum of your error from the desired input over the past second
-              </li>
-              <li>Click the <strong>Autopilot Status Button</strong> to turn the autopilot ON.
-              </li>
-            </ul>
+            <li>See how the autopilot responds by clicking <strong>Autopilot ON/OFF</strong></li>
             <li>To see a plot of your controller's reponse, click <strong>Create Plot</strong></li>
-            <li>More Conroller Hints:</li>
-            <ul><strong>kp*y-s[0]</strong> provides <strong>proportional control</strong></ul>
-            <ul><strong>ki*e</strong> provides <strong>integral control</strong></ul>
-            <ul><strong>kd*(s[1]-s[0])</strong> provides <strong>derivative control</strong></ul>
           </ul>
           <div class="text-center">
             <button id='hideDirBtn' class="mx-auto btn btn-primary shadow-lg">Hide Directions</button>
