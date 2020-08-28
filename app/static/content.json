@@ -22,6 +22,18 @@
         "link": "https://www.wired.com/story/inside-the-pentagons-plan-to-win-over-silicon-valleys-ai-experts/",
         "description": "What does AI mean for the future of warfare?",
         "image": "/static/images/wired.png"
+      },
+      {
+        "title": "AI in the Skies",
+        "link": "https://www.youtube.com/watch?v=-cqvNWZBku4&t=0s&authuser=1",
+        "description": "YouTube video about the AlphaDogFight trials",
+        "image": "/static/images/f18s.png"
+      },
+      {
+        "title": "AI Final Dogfight",
+        "link": "https://www.youtube.com/watch?v=IOJhgC1ksNU&authuser=1",
+        "description": "YouTube video about the AlphaDogFight trials",
+        "image": "/static/images/f35.png"
       }
       
     ]
@@ -55,7 +67,7 @@
       {
         "title": "Autopilot Simulator",
         "link": "/static/control-examples/autopilot.html",
-        "description": "Try maintaining altititude of a helicopter and design an autopilot controller to automate the task.",
+        "description": "Try maintaining altititude of a helicopter and design an autopilot controller to automate the task. Adjust the proportional, integral and derviative gains to make an PID controller.",
         "image": "/static/images/autopilot.png"
       },
       {
