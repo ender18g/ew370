@@ -27,13 +27,13 @@
         "title": "AI in the Skies",
         "link": "https://www.youtube.com/watch?v=-cqvNWZBku4&t=0s&authuser=1",
         "description": "YouTube video about the AlphaDogFight trials",
-        "image": "/static/images/f18s.png"
+        "image": "/static/images/f18s.jpg"
       },
       {
         "title": "AI Final Dogfight",
         "link": "https://www.youtube.com/watch?v=IOJhgC1ksNU&authuser=1",
         "description": "YouTube video about the AlphaDogFight trials",
-        "image": "/static/images/f35.png"
+        "image": "/static/images/f35.jpg"
       }
       
     ]
