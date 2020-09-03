@@ -75,6 +75,18 @@
         "link": "/static/control-examples/index.html",
         "description": "Design a proportional controller for a CIWS (Close in Weapons System) motor so that you can point at and shoot an enemy helicopter",
         "image": "/static/images/gun.jpg"
+      },
+      {
+        "title": "ISS Dragon Docking Simulator",
+        "link": "https://iss-sim.spacex.com/",
+        "description": "Attempt to dock the SpaceX Dragon 2 Vehicle to the International Space Station",
+        "image": "/static/images/dragon.png"
+      },
+      {
+        "title": "Autopilot Code for Dragon Docking Simulator",
+        "link": "/static/dragonAutopilot.js",
+        "description": "Copy the code and paste it into the Javascript Console for the Dragon Docking Simulator",
+        "image": "/static/images/code.jpg"
       }
     ]
   },
