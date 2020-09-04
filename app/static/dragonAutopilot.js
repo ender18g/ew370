@@ -127,9 +127,10 @@ var autoEnabled = false;
 function toggleAuto() {
 	autoEnabled = ! autoEnabled;
 	$("#auto-toggle").innerText = autoEnabled ? "DISABLE AUTOPILOT":"ENABLE AUTOPILOT";
-	rollErr=0;
-     pitchErr=0;
-    yawErr=0;
+ rollArr=new Array(100).fill(0);
+ pitchArr=new Array(100).fill(0);
+ yawArr=new Array(100).fill(0);
+
 }
 
 
@@ -216,9 +217,9 @@ var transXP = Kp; // proportional. Higher values: more thrust
 var transI = Ki;
 var transXD = Kd; // derivative. Higher values: resists motion/less overshoot
 
-var rollErr=0;
-var pitchErr=0;
-var yawErr=0;
+var rollArr=new Array(100).fill(0);
+var pitchArr=new Array(100).fill(0);
+var yawArr=new Array(100).fill(0);
 
 
 const initGains = ()=>{
@@ -232,9 +233,9 @@ const initGains = ()=>{
 	transD = Kd
 
 	// X translation. Axis towards the station.
-	transXP = Kp/2; // proportional. Higher values: more thrust
+	transXP = Kp/3; // proportional. Higher values: more thrust
 	transI = Ki;
-	transXD = Kd*2;
+	transXD = Kd*3;
 }
 
 
@@ -273,7 +274,12 @@ function controlLoop() {
 	// PD loop
 	var pitchRate = getPitchRate();
 	var pitch = getPitch();
-	pitchErr += pitch;
+	
+	pitchArr.pop();
+    pitchArr.unshift(pitch);
+    const pitchErr=pitchArr.reduce((acc,cur)=>{
+    	return acc+=cur;
+    });
 
 	var pitchSetpoint = Math.round((pitch * rotP - pitchRate * rotD+ pitchErr*rotI) * 10) / 10;
 	if (pitchRate < pitchSetpoint && pitchRate < maxAngVel) {
@@ -285,6 +291,14 @@ function controlLoop() {
 
 	var yawRate = getYawRate();
 	var yaw = getYaw();
+
+    yawArr.pop();
+    yawArr.unshift(yaw);
+    const yawErr=yawArr.reduce((acc,cur)=>{
+    	return acc+=cur;
+    });
+
+ 
 
 	var yawSetpoint = Math.round((yaw * rotP - yawRate * rotD+ yawErr*rotI) * 10) / 10;
 
@@ -298,7 +312,13 @@ function controlLoop() {
 
 	var rollRate = getRollRate();
 	var roll = getRoll();
-	rollErr += roll;
+
+	    rollArr.pop();
+    rollArr.unshift(roll);
+    const rollErr=rollArr.reduce((acc,cur)=>{
+    	return acc+=cur;
+    });
+
 
 	// only correct 
 
@@ -311,18 +331,20 @@ function controlLoop() {
 		roll_left();
 	}
 
+
+		//log rotation rate setpoints
+// 		console.log({
+// 			p: pitchErr,
+// 			y: yawErr,
+// 			r: rollErr,
+// 			p: pitchArr.length
+// 		});
+
 	// translate only if angle is small
 	if (Math.abs(pitch) + Math.abs(yaw) + Math.abs(roll) <= 3*ERROR_TOL) {
 		translationCorrection();
 	}
-	else {
-		// log rotation rate setpoints
-		//console.log({
-		//	p: pitchSetpoint,
-		//	y: yawSetpoint,
-		//	r: rollSetpoint
-		//});
-	}
+
 }
 
 function translationCorrection() {
