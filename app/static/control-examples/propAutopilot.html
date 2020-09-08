@@ -18,7 +18,7 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="propStyle.css">
   <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
 </head>
@@ -39,18 +39,18 @@
 
         <div id="controlPanel" class="text-center mx-auto rounded">
           <label for="desiredAltSlider">Desired Altitude:</label>
-          <h4><strong id='desiredAltText'>1500</strong>
-            <input id='desiredAltSlider' type="range" min='0' max='5000' step='100' value='1500'></h4>
+          <h4><strong id='desiredAltText'>3000</strong>
+            <input id='desiredAltSlider' type="range" min='0' max='5000' step='100' value='3000'></h4>
           <label for="controllerEqn">Controller Equation:</label>
           <!-- <input class="w-50" type="text" id="controllerEqn" value='55+(.1*(y-s[0])+.1*(s[1]-s[0])+.1*e)'> -->
           <div style="border: 2px solid grey; border-radius: 5px;"
-            class="p-3 input-group d-flex justify-content-between mb-3">
+            class="p-3 input-group d-flex  mb-3">
             <div class="d-none">Neutral Collective Setting:<input style="width:60px;" class="mx-2" type="text" value="50"
                 id="throttle-gain" /></div>
             <div>Proportional Gain:<input style="width:60px;" class="mx-2" type="text" value="0"
                 id="proportional-gain" /></div>
-            <div>Integral Gain:<input style="width:60px;" class="mx-2" type="text" value="0" id="integral-gain" /></div>
-            <div>Derivative Gain:<input style="width:60px;" class="mx-2" type="text" value="0" id="derivative-gain" />
+            <div class="d-none">Integral Gain:<input style="width:60px;" class="mx-2" type="text" value="0" id="integral-gain" /></div>
+            <div class="d-none">Derivative Gain:<input style="width:60px;" class="mx-2" type="text" value="0" id="derivative-gain" />
             </div>
 
           </div>
@@ -58,7 +58,7 @@
               OFF</button></h5>
         </div>
 
-        <div id='directionsPanel' class="mx-auto my-3 p-5 bg-light shadow-lg rounded">
+        <div id='directionsPanel' class="d-none mx-auto my-3 p-5 bg-light shadow-lg rounded">
 
           <h3>Welcome to the Autopilot Simulator!</h3>
           <p>To get started, use the following steps:</p>

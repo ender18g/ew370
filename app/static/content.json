@@ -1,6 +1,6 @@
 [
   {
-    "id":"lesson1",
+    "id": "lesson1",
     "title": "Intro to Autonomy",
     "description": "Introduction to autonomous systems and tasks that are targets for autonomy",
     "image": "/static/images/drone_mountains.jpg",
@@ -35,12 +35,11 @@
         "description": "YouTube video about the AlphaDogFight trials",
         "image": "/static/images/f35.jpg"
       }
-      
     ]
   },
   {
-    "id":"lesson2",
-    "title": "Control and Early Autonomy",
+    "id": "lesson2",
+    "title": "System Basics",
     "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
     "image": "/static/images/robot_arm2.jpg",
     "resources": [
@@ -59,13 +58,33 @@
     ]
   },
   {
-    "id":"lesson3",
-    "title": "Model Based Control",
+    "id": "lesson3",
+    "title": "Error and System Response",
     "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
     "image": "/static/images/circuit.jpg",
     "resources": [
       {
-        "title": "Autopilot Simulator",
+        "title": "Mass-Spring System Simulation",
+        "link": "https://www.math.ksu.edu/~albin/apps/mass_spring.html",
+        "description": "Test the system response of ",
+        "image": "/static/images/spring.png"
+      },
+      {
+        "title": "Autopilot Simulator Proportional Control",
+        "link": "/static/control-examples/propAutopilot.html",
+        "description": "Try maintaining altititude of a helicopter and design an autopilot controller to automate the task. Adjust the proportional, integral and derviative gains to make an PID controller.",
+        "image": "/static/images/autopilotProp.png"
+      }
+    ]
+  },
+  {
+    "id": "lesson4",
+    "title": "Controllers",
+    "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
+    "image": "/static/images/abstract-pins.jpg",
+    "resources": [
+      {
+        "title": "Autopilot Simulator PID Control",
         "link": "/static/control-examples/autopilot.html",
         "description": "Try maintaining altititude of a helicopter and design an autopilot controller to automate the task. Adjust the proportional, integral and derviative gains to make an PID controller.",
         "image": "/static/images/autopilot.png"
@@ -91,99 +110,41 @@
     ]
   },
   {
-    "id":"lesson4",
-    "title": "Environmental Sensing",
-    "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
-    "image": "/static/images/abstract-pins.jpg",
-    "resources": [
-      {
-        "title": "Lab 1",
-        "link": "http://www.google.com",
-        "description": "Sample interactive lab link",
-        "image": "/static/images/mavic.jpg"
-      },
-      {
-        "title": "lab 2",
-        "link": "http://www.google.com",
-        "description": "Another interactive lab link",
-        "image": "/static/images/circuit.jpg"
-      }
-    ]
-  },
-  {
-    "id":"lesson5",
-    "title": "Computer Vision",
+    "id": "lesson5",
+    "title": "Sensors",
     "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
     "image": "/static/images/drone_camera.jpg",
-    "resources": [
-      {
-        "title": "Edge Detection",
-        "link": "/static/cv-examples/EdgeDetection/index.html",
-        "description": "Interactive tool that uses your webcam to determine the edges of objects",
-        "image": "/static/images/abstract-net2.jpg"
-      },
-      {
-        "title": "Face Detection",
-        "link": "/static/cv-examples/FaceDetection/index.html",
-        "description": "Find faces in a provided image.",
-        "image": "/static/images/security_cameras.jpg"
-      },
-      {
-        "title": "Thresholding",
-        "link": "/static/cv-examples/Thresholding/index.html",
-        "description": "Adjust a threshold value to see the impact on the image",
-        "image": "/static/images/abstract-pins.jpg"
-      },
-      {
-        "title": "Optical Flow",
-        "link": "/static/cv-examples/OpticalFlow/index.html",
-        "description": "See how a camera tracks moving pixels with optical flow",
-        "image": "/static/images/wide_satellite_dish.jpg"
-      }
-    ]
+    "resources": []
   },
   {
-    "id":"lesson7",
-    "title": "Guidance, Navigation, and Control",
+    "id": "lesson7",
+    "title": "Autonomy Today",
     "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
     "image": "/static/images/yps.jpg",
-    "resources": [
-      {
-        "title": "Lab 1",
-        "link": "http://www.google.com",
-        "description": "Sample interactive lab link",
-        "image": "/static/images/robotic_arm.jpg"
-      },
-      {
-        "title": "lab 2",
-        "link": "http://www.google.com",
-        "description": "Another interactive lab link",
-        "image": "/static/images/pots.jpg"
-      }
-    ]
+    "resources": []
   },
   {
-    "id":"lesson8",
-    "title": "Addressing Competing Objectives",
+    "id": "lesson8",
+    "title": "Computer Vision",
     "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
     "image": "/static/images/circuit.jpg",
     "resources": [
       {
-        "title": "Lab 1",
-        "link": "http://www.google.com",
-        "description": "Sample interactive lab link",
+        "title": "Computer Vision (CV) Examples",
+        "link": "https://kylemcdonald.github.io/cv-examples/",
+        "description": "Explore Thresholding, Point Tracking, Optical Flow, Edge Detection and other CV fundamentals in this browser-based demo.",
         "image": "/static/images/security_cameras.jpg"
       },
       {
-        "title": "lab 2",
-        "link": "http://www.google.com",
-        "description": "Another interactive lab link",
-        "image": "/static/images/boxing_brains.jpg"
+        "title": "Google Teachable Machine Image Project",
+        "link": "https://teachablemachine.withgoogle.com/train/image",
+        "description": "Train a computer to identify different types of images.",
+        "image": "/static/images/colors.jpg"
       }
     ]
   },
   {
-    "id":"lesson9",
+    "id": "lesson9",
     "title": "Machine Learning",
     "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
     "image": "/static/images/circuit.jpg",
@@ -194,31 +155,17 @@
         "description": "Interactively contribute data, label the data, and train a LSTM Neural Network for Jodel sentiment analysis",
         "image": "/static/images/abstract-net.jpg"
       }
-
     ]
   },
   {
-    "id":"lesson10",
-    "title": "Communications",
+    "id": "lesson10",
+    "title": "Communications and Distributed Networks",
     "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
     "image": "/static/images/circuit.jpg",
-    "resources": [
-      {
-        "title": "Lab 1",
-        "link": "http://www.google.com",
-        "description": "Sample interactive lab link",
-        "image": "/static/images/sub.jpg"
-      },
-      {
-        "title": "lab 2",
-        "link": "http://www.google.com",
-        "description": "Another interactive lab link",
-        "image": "/static/images/vr.jpg"
-      }
-    ]
+    "resources": []
   },
   {
-    "id":"lesson11",
+    "id": "lesson11",
     "title": "Artificial Intelligence",
     "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
     "image": "/static/images/boxing_brains.jpg",
@@ -236,6 +183,12 @@
         "image": "/static/images/FlappyLearn.png"
       }
     ]
+  },
+  {
+    "id": "lesson12",
+    "title": "Ethics of Autonomous Systems",
+    "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
+    "image": "/static/images/circuit.jpg",
+    "resources": []
   }
-  
 ]
