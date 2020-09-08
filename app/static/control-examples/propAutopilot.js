@@ -215,9 +215,10 @@ plotBtn.addEventListener('click', () => {
     setTimeout(() => {
       creating_plot=false;
       console.log(creating_plot)
+      const plotArray=Array.from(altArray.reverse());
       plotPanel.classList.remove('d-none');
       skyPanel.classList.remove('d-none');
-      makePlot(parseInt(desiredAltSlider.value), altArray.reverse(), plotPanel);
+      makePlot(parseInt(desiredAltSlider.value), plotArray, plotPanel);
     }, plotLength * 1000);
 
   }
