@@ -75,7 +75,7 @@ let autoPilotOn = false;
 //array of altitudes full of 0s
 let altArray = Array(100 * plotLength).fill(0);
 //error from last 1 second
-let errArray = Array(10000).fill(0);
+let errArray = Array(300).fill(0);
 heloBody.frictionAir = .03;
 let showPlot = false;
 let lastForce=0;
