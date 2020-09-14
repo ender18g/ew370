@@ -97,10 +97,9 @@ let helo = {
     Body.applyForce(
       heloBody,
       { x: heloBody.position.x, y: heloBody.position.y },
-      { x: 0, y: -0.000015 * lastForce + .00001 * randomFactor }
+      { x: 0, y: -0.000025 * lastForce + .00001 * randomFactor }
     );
     const currentAlt = this.getAltitude();
-    altArray.pop();
     altArray.unshift(currentAlt);
 
 
@@ -124,7 +123,7 @@ let helo = {
     if (autoPilotOn) {
       //value='55+(.1*(y-s[0])+.1*(s[1]-s[0])+.1*e)
       //get gain values
-      let Kt = parseFloat(document.querySelector("#throttle-gain").value);
+      let Kt = 35;
       let Kp = parseFloat(document.querySelector("#proportional-gain").value);
       let Ki = parseFloat(document.querySelector("#integral-gain").value);
       let Kd = parseFloat(document.querySelector("#derivative-gain").value);
@@ -193,12 +192,12 @@ plotBtn.addEventListener('click', () => {
     if(!document.querySelector("#manualFly").checked){
       autoPilotBtn.click();
       plotLength=7;
-      altArray = Array(100 * plotLength).fill(0);
+      altArray = [];
     } 
     //else change the plot length to longer for manual flying
     else{
       plotLength=15;
-      altArray = Array(100 * plotLength).fill(0);
+      altArray = [];
     }
     // setup the button to start coutning down timer
     plotBtn.innerText = plotLength;
