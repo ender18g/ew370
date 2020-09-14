@@ -22,9 +22,15 @@ const directionsPanel = document.querySelector('#directionsPanel');
 const hideDirBtn = document.querySelector('#hideDirBtn');
 
 
-const width = skyPanel.clientWidth;
-const height = skyPanel.clientHeight;
+// const width = skyPanel.clientWidth;
+// const height = skyPanel.clientHeight;
+const width = 500;
+const height = 800;
+
 const maxAlt = 5000;
+
+
+//document.querySelector('canvas').classList.add('')
 
 
 var render = Render.create({
@@ -146,6 +152,8 @@ setInterval(() => {
 setInterval(() => {
   helo.applyController();
 }, 30)
+
+
 
 
 

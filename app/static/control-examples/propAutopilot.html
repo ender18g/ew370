@@ -44,13 +44,13 @@
           <label for="controllerEqn">Controller Equation:</label>
           <!-- <input class="w-50" type="text" id="controllerEqn" value='55+(.1*(y-s[0])+.1*(s[1]-s[0])+.1*e)'> -->
           <div style="border: 2px solid grey; border-radius: 5px;"
-            class="p-3 input-group d-flex  mb-3">
+            class="p-3 input-group d-flex justify-content-between mb-3">
             <div class="d-none">Neutral Collective Setting:<input style="width:60px;" class="mx-2" type="text" value="50"
                 id="throttle-gain" /></div>
-            <div>Proportional Gain:<input style="width:60px;" class="mx-2" type="text" value="0"
+            <div>Kp<input style="width:60px;" class="mx-2" type="text" value="0"
                 id="proportional-gain" /></div>
-            <div class="d-none">Integral Gain:<input style="width:60px;" class="mx-2" type="text" value="0" id="integral-gain" /></div>
-            <div class="d-none">Derivative Gain:<input style="width:60px;" class="mx-2" type="text" value="0" id="derivative-gain" />
+            <div class="d-none">Ki<input style="width:60px;" class="mx-2" type="text" value="0" id="integral-gain" /></div>
+            <div class="d-none">Kd<input style="width:60px;" class="mx-2" type="text" value="0" id="derivative-gain" />
             </div>
 
           </div>
@@ -58,7 +58,7 @@
               OFF</button></h5>
         </div>
 
-        <div id='directionsPanel' class="d-none mx-auto my-3 p-5 bg-light shadow-lg rounded">
+        <div id='directionsPanel' class="mx-auto my-3 p-5 bg-light shadow-lg rounded">
 
           <h3>Welcome to the Autopilot Simulator!</h3>
           <p>To get started, use the following steps:</p>
@@ -77,7 +77,7 @@
           Plot Here
         </div>
 
-        <div id='skyPanel' class='h-75'>
+        <div id='skyPanel' class='d-flex justify-content-center'>
 
         </div>
       </div>
@@ -90,7 +90,7 @@
           <h4>Altitude: <strong id="altitudeText">0</strong></h4>
           <br><br>
           <label for="disturbanceSlider">Disturbance:</label>
-          <input id='disturbanceSlider' type="range" min="0" max="200" value='10'>
+          <input id='disturbanceSlider' type="range" min="0" max="200" value='0'>
           <br><br><br>
 
           <div class="input-group text-center d-flex justify-content-center">
