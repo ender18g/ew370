@@ -130,6 +130,12 @@ function toggleAuto() {
  rollArr=new Array(100).fill(0);
  pitchArr=new Array(100).fill(0);
  yawArr=new Array(100).fill(0);
+ clearInterval(timerID);
+ time=0;
+ timerID = setInterval(()=>{
+	time+=1;
+	document.querySelector("#dispTimer").innerText=time;
+ },1000)
 
 }
 
@@ -186,6 +192,12 @@ document.getElementById("options").insertAdjacentHTML('beforeend', `<div style="
 		<h2 onclick="setGain('d',.1)">+</h2>
 		<input id="Kd" type="range" min="0" max="3" value="0" step="any"/>
 		<h2 onclick="setGain('d',-.1)">-</h2>
+		</div>
+		
+
+    <div class="message-button" style="display: inline-block;text-align: center;margin: 2px;">
+		<h3>Timer:</h3>
+		<h3 id="dispTimer">0</h3>
     </div>
 
 
@@ -195,8 +207,8 @@ document.getElementById("options").insertAdjacentHTML('beforeend', `<div style="
 `);
 
 
-
-
+let timerID=0;
+let time = 0;
 
 
 // The script itself:
