@@ -6,19 +6,19 @@
 <h3 class="text-center">Supervised Neural Network for Jodels</h3>
 <h5 class="text-center">A LSTM (Long Short Term Memory) Supervised Learning Lab</h5>
 
-<form action="mlData" method="POST">
+<form>
   <div class="form-row">
     <div class="col-9">
-      <input name="comment" type="text" class="form-control" placeholder="jodel post">
+      <input id="newInput" name="comment" type="text" class="form-control" placeholder="jodel post">
     </div>
     <div class="col-2">
-      <select name="output" type="text" class="custom-select form-control" placeholder="output">
+      <select id="newOutput" name="output" type="text" class="custom-select form-control" placeholder="output">
         <option value="happy">happy</option>
         <option value="sad">sad</option>
       </select>
     </div>
     <div class="col-1">
-      <button id='addBtn' type="submit" class="btn btn-primary">Add</button>
+      <button id='addBtn' class="btn btn-primary">Add</button>
     </div>
   </div>
 </form>
@@ -26,10 +26,11 @@
 
 <div class="container text-center">
 
-  <button id="updateDataBtn" class="my-3 btn btn-success">Refresh Data</button>
-  <button id="showAllBtn" class="my-3 btn btn-warning">Show All Data</button>
+  <!-- <button id="updateDataBtn" class="my-3 btn btn-success">Refresh Data</button> -->
+  <!-- <button id="showAllBtn" class="my-3 btn btn-warning">Show All Data</button> -->
 
 </div>
+
 
 <div id="trainingDiv" class="my-3 container">
 
@@ -55,6 +56,14 @@
   <h4 id='counter' class='text-primary'></h4>
   <textarea id="JSONTextArea" cols="100" rows="10">Insert pre-trained JSON net here</textarea>
 </div>
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
 
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

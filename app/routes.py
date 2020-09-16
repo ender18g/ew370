@@ -23,24 +23,24 @@ def index():
 def brain():
   return render_template('brainex.html')
 
-@app.route('/mlData', methods=["GET","POST","DELETE"])
-def mlData():
-  #if someone is sending new training data, save it
-  if request.method=='POST':
-    new_item = {'input':request.form.get('comment'),'output':request.form.get('output')}
-    comment = Comment(comment=request.form.get('comment'), output=request.form.get('output'))
-    db.session.add(comment)
-    db.session.commit()
-    return redirect(url_for('brain'))
-  #if it's a delete request, delete comment from db
-  if request.method=="DELETE":
-    delete_id = int(request.args.get('id'))
-    comment = Comment.query.get(delete_id)
-    db.session.delete(comment)
-    db.session.commit()
-  mlData = [i.serialize for i in Comment.query.all()]
-  #print(mlData)
-  return jsonify(mlData)
+# @app.route('/mlData', methods=["GET","POST","DELETE"])
+# def mlData():
+#   #if someone is sending new training data, save it
+#   if request.method=='POST':
+#     new_item = {'input':request.form.get('comment'),'output':request.form.get('output')}
+#     comment = Comment(comment=request.form.get('comment'), output=request.form.get('output'))
+#     db.session.add(comment)
+#     db.session.commit()
+#     return redirect(url_for('brain'))
+#   #if it's a delete request, delete comment from db
+#   if request.method=="DELETE":
+#     delete_id = int(request.args.get('id'))
+#     comment = Comment.query.get(delete_id)
+#     db.session.delete(comment)
+#     db.session.commit()
+#   mlData = [i.serialize for i in Comment.query.all()]
+#   #print(mlData)
+#   return jsonify(mlData)
 
 
 
