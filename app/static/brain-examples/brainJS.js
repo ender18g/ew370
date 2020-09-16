@@ -36,7 +36,7 @@ const dbRef = firebase.database().ref();
 const jodelRef = dbRef.child('jodels');
 ///create the table from snapshot
 jodelRef.orderByKey().on("value", snapshot => {
-  jodelsObj = snapshot.val();
+  const jodelsObj = snapshot.val();
   console.log(jodelsObj);
   populateTrainingDiv(jodelsObj);
   trainingData=Object.values(jodelsObj);
@@ -68,12 +68,12 @@ const populateTrainingDiv = (data) => {
   //   data = data.slice(0, commentsPerPage);
   // }
   for (let c in data) {
-    newHTML += `
+    newHTML = `
       <tr>
       <td scope="row" class="inputCell" >${data[c].input}</td>
       <td>${data[c].output}</td>
       <td class="remove_icon font-weight-bold text-danger" commentID="${c}">X</td>
-      </tr>`;
+      </tr>` + newHTML;
   }
   newHTML += "</tbody>"
   newElement.innerHTML = newHTML;
@@ -177,6 +177,8 @@ trainBtn.addEventListener('click', () => {
 // //kick it off by building the entire comment table
 // generateTable();
 
+
+/// this will add a new jodel to the database
 addBtn.addEventListener('click', (e)=>{
   e.preventDefault();
   const input = newInput.value;
@@ -187,9 +189,8 @@ addBtn.addEventListener('click', (e)=>{
     input,
     output
   };
-
-
   console.log(newJodel);
+  newInput.value='';
   return jodelRef.update(newJodel)
     
 
