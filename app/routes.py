@@ -16,10 +16,12 @@ from app.models import Comment
 
 @app.route('/')
 @app.route('/index')
+@app.route('/index.html')
 def index():
   return render_template('index.html')
 
 @app.route('/brain')
+@app.route('/brain.html')
 def brain():
   return render_template('brainex.html')
 
@@ -41,6 +43,3 @@ def brain():
 #   mlData = [i.serialize for i in Comment.query.all()]
 #   #print(mlData)
 #   return jsonify(mlData)
-
-
-

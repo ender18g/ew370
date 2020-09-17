@@ -151,7 +151,7 @@
     "resources": [
       {
         "title": "Building a Neural Network for Jodel",
-        "link": "brain",
+        "link": "/brain.html",
         "description": "Interactively contribute data, label the data, and train a LSTM Neural Network for Jodel sentiment analysis",
         "image": "/static/images/abstract-net.jpg"
       }
@@ -172,7 +172,7 @@
     "resources": [
       {
         "title": "Building a Neural Network for Jodel",
-        "link": "brain",
+        "link": "/brain.html",
         "description": "Interactively contribute data, label the data, and train a LSTM Neural Network for Jodel sentiment analysis",
         "image": "/static/images/abstract-net.jpg"
       },
