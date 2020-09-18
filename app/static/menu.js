@@ -15,7 +15,7 @@ const checkChrome = () => {
 
 
 // generate each menu item
-const generateMenuItem = (lesson, i) => {
+const generateMenuItem = async (lesson, i) => {
 
   let newElement = document.createElement("a");
   newElement.classList.add('list-group-item', 'list-group-item-action');
@@ -28,19 +28,21 @@ const generateMenuItem = (lesson, i) => {
     generateMain(content[this.index]);
   })
   menuDiv.append(newElement);
+  return true;
 }
 
 
 
 
 //generate the entire menu
-const generateMenu = (content) => {
+const generateMenu = async (content) => {
   let i = 0;
+  menuDiv.innerHTML="";
   for (lesson of content) {
     generateMenuItem(lesson, i);
     i++;
   }
-
+  return true;
 }
 
 
@@ -106,23 +108,45 @@ const generateMain = async (lesson) => {
 
 //Done with functions MAIN CODE************
 
-checkChrome();
+// checkChrome();
 
-//get the json data via axios
-axios.get('/static/content.json')
-  .then((response) => {
-    content = response.data;
-    generateMenu(content);
-  });
+// //get the json data via axios
+// axios.get('/static/content.json')
+//   .then((response) => {
+//     content = response.data;
+//     generateMenu(content);
+//   });
 
 
-setTimeout(() => {
+// setTimeout(() => {
+//   document.querySelector('.list-group-item').click();
+// }, 100)
+
+
+
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyDinZuBXMQbPuXTrEdl4DGRVH-EPZdK5ug",
+  authDomain: "mlbrain-855e7.firebaseapp.com",
+  databaseURL: "https://mlbrain-855e7.firebaseio.com",
+  projectId: "mlbrain-855e7",
+  storageBucket: "mlbrain-855e7.appspot.com",
+  messagingSenderId: "465924632238",
+  appId: "1:465924632238:web:70b361f129fe718078473f"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Get a reference to the database service
+const dbRef = firebase.database().ref();
+const contentRef = dbRef.child('content');
+///create the table from snapshot
+contentRef.orderByKey().on("value",async snapshot => {
+  content = snapshot.val();
+  console.log(content);
+  await generateMenu(content);
   document.querySelector('.list-group-item').click();
-}, 100)
 
-
-
-
-
-
+});
 
