@@ -125,18 +125,7 @@ const generateMain = async (lesson) => {
 
 
 
-// Your web app's Firebase configuration
-var firebaseConfig = {
-  apiKey: "AIzaSyDinZuBXMQbPuXTrEdl4DGRVH-EPZdK5ug",
-  authDomain: "mlbrain-855e7.firebaseapp.com",
-  databaseURL: "https://mlbrain-855e7.firebaseio.com",
-  projectId: "mlbrain-855e7",
-  storageBucket: "mlbrain-855e7.appspot.com",
-  messagingSenderId: "465924632238",
-  appId: "1:465924632238:web:70b361f129fe718078473f"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+
 
 // Get a reference to the database service
 const dbRef = firebase.database().ref();
