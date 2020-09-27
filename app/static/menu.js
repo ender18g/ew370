@@ -19,13 +19,15 @@ const generateMenuItem = async (lesson, i) => {
 
   let newElement = document.createElement("a");
   newElement.classList.add('list-group-item', 'list-group-item-action');
-  newElement.index = i;
+  newElement.id = `link_${i}`;
   newElement.innerText = `${lesson.title}`;
   // add the event listener that listens for a click on the week
   newElement.addEventListener('click', function () {
     $(".list-group-item").removeClass("bg-success font-weight-bold");
     this.classList.add("bg-success", "font-weight-bold");
-    generateMain(content[this.index]);
+    generateMain(content[i]);
+    localStorage.setItem('curPage', this.id);
+    console.log(this.id);
   })
   menuDiv.append(newElement);
   return true;
@@ -37,7 +39,7 @@ const generateMenuItem = async (lesson, i) => {
 //generate the entire menu
 const generateMenu = async (content) => {
   let i = 0;
-  menuDiv.innerHTML="";
+  menuDiv.innerHTML = "";
   for (lesson of content) {
     generateMenuItem(lesson, i);
     i++;
@@ -131,11 +133,19 @@ const generateMain = async (lesson) => {
 const dbRef = firebase.database().ref();
 const contentRef = dbRef.child('content');
 ///create the table from snapshot
-contentRef.orderByKey().on("value",async snapshot => {
+contentRef.orderByKey().once("value", async snapshot => {
   content = snapshot.val();
   console.log(content);
   await generateMenu(content);
-  document.querySelector('.list-group-item').click();
+
+  let curPage = localStorage.getItem('curPage');
+  if (curPage) {
+    console.log(`got ${curPage} from storage`)
+    document.querySelector(`#${curPage}`).click();
+  }
+  else {
+    document.querySelector('.list-group-item').click();
+  }
 
 });
 
