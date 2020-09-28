@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EW481X</title>
+    <link rel="stylesheet" href="/static/libraries/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
+        integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf"
+        crossorigin="anonymous"></script>
+
+
+
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/static/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/static/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/static/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/static/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/static/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/static/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/static/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/static/images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary p-1">
+        <a class="navbar-brand p-1" href="/">
+            <img src="/static/images/WRCLogo.png" id="usna_crest" class='image-fluid' alt="">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item ">
+                    <a class="nav-link" href="/schedule">Schedule</a>
+                </li> -->
+                <li class="nav-item "">
+                    <a class=" nav-link" href="/index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a target="_blank" class="nav-link" href="https://usna.blackboard.com">Blackboard</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+                <h5 class="pr-2"id='courseTitle'>EW481X</h5>
+            </span>
+        </div>
+    </nav>
+
+
+
+    <div class="my-3 container-fluid">
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyDinZuBXMQbPuXTrEdl4DGRVH-EPZdK5ug",
+    authDomain: "mlbrain-855e7.firebaseapp.com",
+    databaseURL: "https://mlbrain-855e7.firebaseio.com",
+    projectId: "mlbrain-855e7",
+    storageBucket: "mlbrain-855e7.appspot.com",
+    messagingSenderId: "465924632238",
+    appId: "1:465924632238:web:70b361f129fe718078473f",
+    measurementId: "G-T76ESPE2N6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+        
+
+<h3 class="text-center">Supervised Neural Network for Jodels</h3>
+<h5 class="text-center">A LSTM (Long Short Term Memory) Supervised Learning Lab</h5>
+
+<form>
+  <div class="form-row">
+    <div class="col-9">
+      <input id="newInput" name="comment" type="text" class="form-control" placeholder="jodel post">
+    </div>
+    <div class="col-2">
+      <select id="newOutput" name="output" type="text" class="custom-select form-control" placeholder="output">
+        <option value="happy">happy</option>
+        <option value="sad">sad</option>
+      </select>
+    </div>
+    <div class="col-1">
+      <button id='addBtn' class="btn btn-primary">Add</button>
+    </div>
+  </div>
+</form>
+<h5 id="confirm_add" class=" mt-1 text-center text-primary d-none">Added</h5>
+
+<div class="container text-center">
+
+  <!-- <button id="updateDataBtn" class="my-3 btn btn-success">Refresh Data</button> -->
+  <!-- <button id="showAllBtn" class="my-3 btn btn-warning">Show All Data</button> -->
+
+</div>
+
+
+<div id="trainingDiv" class="my-3 container">
+
+
+</div>
+
+<div class="container my-3 text-center">
+  <label for="iterations">Training Iterations:</label>
+  <input name='iterations' value='1000' type="text" id="iterationsInput">
+  <button id="trainBtn" class="btn btn-danger">Train Network</button>
+  <div class="row my-3">
+    <div class="input-group mb-3">
+      <input id="testText" type="text" class="form-control" value="I'm really enjoying my time at the Academy">
+      <div class="input-group-append">
+        <button id="testBtn" class="btn btn-success" type="button">Test Sentiment</button>
+      </div>
+    </div>
+
+
+
+  </div>
+  <h1 id='brainOutput' class='text-warning'></h1>
+  <h4 id='counter' class='text-primary'></h4>
+  <textarea id="JSONTextArea" cols="100" rows="10" placeholder="Insert pre-trained JSON net here"></textarea>
+  <br>
+  <button id="resultBtn" class="btn btn-success" type="button">View Network Image</button>
+  <div class="d-flex justify-content-center" id="resultDiv">
+  
+  </div>
+
+</div>
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/static/brain-examples/brain-browser.min.js"></script>
+<script src="/static/brain-examples/to-svg.js"></script>
+<script src="/static/brain-examples/brainJS.js"></script>
+
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>

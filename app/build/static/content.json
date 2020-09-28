@@ -1,0 +1,194 @@
+[
+  {
+    "id": "lesson1",
+    "title": "Intro to Autonomy",
+    "description": "Introduction to autonomous systems and tasks that are targets for autonomy",
+    "image": "/static/images/drone_mountains.jpg",
+    "resources": [
+      {
+        "title": "Are AI-Powered Killer Robots Inevitable?",
+        "link": "https://www.wired.com/story/artificial-intelligence-military-robots/",
+        "description": "What does AI mean for the future of warfare?",
+        "image": "/static/images/wired.png"
+      },
+      {
+        "title": "The Pentagon's AI Chief Prepares for Battle",
+        "link": "https://www.wired.com/story/pentagon-ai-chief-prepares-for-battle/",
+        "description": "What does AI mean for the future of warfare?",
+        "image": "/static/images/wired.png"
+      },
+      {
+        "title": "Inside the Pentagon’s Plan to Win Over Silicon Valley's AI Experts",
+        "link": "https://www.wired.com/story/inside-the-pentagons-plan-to-win-over-silicon-valleys-ai-experts/",
+        "description": "What does AI mean for the future of warfare?",
+        "image": "/static/images/wired.png"
+      },
+      {
+        "title": "AI in the Skies",
+        "link": "https://www.youtube.com/watch?v=-cqvNWZBku4&t=0s&authuser=1",
+        "description": "YouTube video about the AlphaDogFight trials",
+        "image": "/static/images/f18s.jpg"
+      },
+      {
+        "title": "AI Final Dogfight",
+        "link": "https://www.youtube.com/watch?v=IOJhgC1ksNU&authuser=1",
+        "description": "YouTube video about the AlphaDogFight trials",
+        "image": "/static/images/f35.jpg"
+      }
+    ]
+  },
+  {
+    "id": "lesson2",
+    "title": "System Basics",
+    "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
+    "image": "/static/images/robot_arm2.jpg",
+    "resources": [
+      {
+        "title": "Linkbot Lab",
+        "link": "https://roboblockly.com/curriculum/hourofcode/obstaclecourse/6.php",
+        "description": "Program this open-loop robot to navigate an obstacle course",
+        "image": "/static/images/linkbot.png"
+      },
+      {
+        "title": "Draw.io",
+        "link": "https://draw.io",
+        "description": "An easy web-based program to quickly draw block diagrams",
+        "image": "/static/images/draw.png"
+      }
+    ]
+  },
+  {
+    "id": "lesson3",
+    "title": "Error and System Response",
+    "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
+    "image": "/static/images/circuit.jpg",
+    "resources": [
+      {
+        "title": "Mass-Spring System Simulation",
+        "link": "https://www.math.ksu.edu/~albin/apps/mass_spring.html",
+        "description": "Test the system response of ",
+        "image": "/static/images/spring.png"
+      },
+      {
+        "title": "Autopilot Simulator Proportional Control",
+        "link": "/static/control-examples/propAutopilot.html",
+        "description": "Try maintaining altititude of a helicopter and design an autopilot controller to automate the task. Adjust the proportional, integral and derviative gains to make an PID controller.",
+        "image": "/static/images/autopilotProp.png"
+      }
+    ]
+  },
+  {
+    "id": "lesson4",
+    "title": "Controllers",
+    "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
+    "image": "/static/images/abstract-pins.jpg",
+    "resources": [
+      {
+        "title": "Autopilot Simulator PID Control",
+        "link": "/static/control-examples/autopilot.html",
+        "description": "Try maintaining altititude of a helicopter and design an autopilot controller to automate the task. Adjust the proportional, integral and derviative gains to make an PID controller.",
+        "image": "/static/images/autopilot.png"
+      },
+      {
+        "title": "CIWS Simulator",
+        "link": "/static/control-examples/index.html",
+        "description": "Design a proportional controller for a CIWS (Close in Weapons System) motor so that you can point at and shoot an enemy helicopter",
+        "image": "/static/images/gun.jpg"
+      },
+      {
+        "title": "ISS Dragon Docking Simulator",
+        "link": "https://iss-sim.spacex.com/",
+        "description": "Attempt to dock the SpaceX Dragon 2 Vehicle to the International Space Station",
+        "image": "/static/images/dragon.png"
+      },
+      {
+        "title": "Autopilot Code for Dragon Docking Simulator",
+        "link": "/static/dragonAutopilot.js",
+        "description": "Copy the code and paste it into the Javascript Console for the Dragon Docking Simulator",
+        "image": "/static/images/code.jpg"
+      }
+    ]
+  },
+  {
+    "id": "lesson5",
+    "title": "Sensors",
+    "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
+    "image": "/static/images/drone_camera.jpg",
+    "resources": []
+  },
+  {
+    "id": "lesson7",
+    "title": "Autonomy Today",
+    "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
+    "image": "/static/images/yps.jpg",
+    "resources": []
+  },
+  {
+    "id": "lesson8",
+    "title": "Computer Vision",
+    "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
+    "image": "/static/images/circuit.jpg",
+    "resources": [
+      {
+        "title": "Computer Vision (CV) Examples",
+        "link": "https://kylemcdonald.github.io/cv-examples/",
+        "description": "Explore Thresholding, Point Tracking, Optical Flow, Edge Detection and other CV fundamentals in this browser-based demo.",
+        "image": "/static/images/security_cameras.jpg"
+      },
+      {
+        "title": "Google Teachable Machine Image Project",
+        "link": "https://teachablemachine.withgoogle.com/train/image",
+        "description": "Train a computer to identify different types of images.",
+        "image": "/static/images/colors.jpg"
+      }
+    ]
+  },
+  {
+    "id": "lesson9",
+    "title": "Machine Learning",
+    "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
+    "image": "/static/images/circuit.jpg",
+    "resources": [
+      {
+        "title": "Building a Neural Network for Jodel",
+        "link": "/brain.html",
+        "description": "Interactively contribute data, label the data, and train a LSTM Neural Network for Jodel sentiment analysis",
+        "image": "/static/images/abstract-net.jpg"
+      }
+    ]
+  },
+  {
+    "id": "lesson10",
+    "title": "Communications and Distributed Networks",
+    "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
+    "image": "/static/images/circuit.jpg",
+    "resources": []
+  },
+  {
+    "id": "lesson11",
+    "title": "Artificial Intelligence",
+    "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
+    "image": "/static/images/boxing_brains.jpg",
+    "resources": [
+      {
+        "title": "Building a Neural Network for Jodel",
+        "link": "/brain.html",
+        "description": "Interactively contribute data, label the data, and train a LSTM Neural Network for Jodel sentiment analysis",
+        "image": "/static/images/abstract-net.jpg"
+      },
+      {
+        "title": "Flappy Learn",
+        "link": "static/Flappy/index.html",
+        "description": "Visualize the creation and training of for an algorthm learning to play Flappy Bird",
+        "image": "/static/images/FlappyLearn.png"
+      }
+    ]
+  },
+  {
+    "id": "lesson12",
+    "title": "Ethics of Autonomous Systems",
+    "description": "Introduction to the historical trends in warfare, terminology, and the spectrum of crewed vs autonomous systems",
+    "image": "/static/images/circuit.jpg",
+    "resources": []
+  }
+]

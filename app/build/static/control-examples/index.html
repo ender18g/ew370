@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIWS Simulator</title>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="style.css">
+  <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+</head>
+
+<body class=''>
+  <img class="mx-auto" style="transform: rotate(0deg); transition-duration: 1s;" id="gun" src="gun.png" alt="">
+  <div id="menuDiv" class="shadow-lg pt-3 container-fluid">
+
+    <div class="form-row">
+      <div class="form-group col-sm-4">
+        <label for="degInput">Input Signal (y):</label>
+        <input class='form-control' type="text" value="90" name="degRange" id="degInput">
+      </div>
+      <div class="form-group col-sm-4">
+        <label for="degInput">Controller Equation: </label>
+        <input class='form-control' type="text" value="2*(y-s)" name="controllerInput" id="controllerInput">
+      </div>
+      <div class="form-group col-sm-4">
+        <label for="">Control Signal (x): <b id="controlSignal">0</b></label>
+        <p class="mb-1"><label for="continuousCheck">Run on Continuous Loop</label>
+          <input checked="true" type="checkbox" name="continuousCheck" id="continuousCheck"></p>
+        <p> <button class='btn btn-success shadow-lg' id="applyBtn">Apply Input</button>
+          <button class='btn btn-danger shadow-lg' id="resetBtn">Reset</button></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="shot" class='shot'>⁌</div>
+
+
+  <div class="container-fluid">
+    <img id="heloImg" src="helo.png" alt="">
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class='container-fluid' id="bottomDiv">
+    <div id="plotDiv" class="shadow-lg">
+
+    </div>
+      <div id='directionsDiv' class="col-sm-5 mx-auto my-5 p-5 bg-light shadow-lg">
+      
+      <h3>Welcome to the CIWS Simulator!</h3>
+      <p>To get started, use the following steps:</p>
+      <ul>
+        <li>Put in a desired <strong>Input Angle</strong> or select <strong>Move Helo</strong></li>
+        <li>Customize your controller equation</li>
+        <ul>
+          <li>Use <strong>y</strong> to reference your input angle</li>
+          <li>Use <strong>s</strong> to reference the gun motor's sensor</li>
+          <li>Check <strong>Run on continuous loop</strong> if you'd like to run a controller that utilizes feedback</li>
+        </ul>
+        <li>Click <strong>Apply Input</strong> to move the gun</li>
+        <li>When you've targeted the helo, click <strong>Fire</strong> to test your accuracy.</li>
+      </ul>
+      <div class="text-center">
+      <button id='hideDir' class="mx-auto btn btn-primary shadow-lg">Hide Directions</button>
+    </div></div>
+
+
+    <div class="row">
+    </div>
+    <div class="row">
+      <div class="mx-auto">
+        <button id="seeChartBtn" class="btn btn-success shadow-lg">Toggle Graph</button>
+        <button id="moveHeloBtn" class="btn btn-warning shadow-lg">Move Helo</button>
+        <button id="fireBtn" class="btn btn-danger shadow-lg">Fire</button>
+      </div>
+    </div>
+    <div class="row">
+      <h5 class='mt-4 mx-auto' id="rotationP">Actual Gun Position: <b id='rotationB'>0 </b>degrees</h5>
+      <h5 class='mt-4 mx-auto' id="rotationP">Helo Position: <b id='readoutAngle'>0 </b>degrees</h5>
+    </div>
+  </div>
+</body>
+
+<script src="script.js"></script>
+
+</html>
