@@ -16,6 +16,8 @@ const commentsPerPage = 30;
 const showAllBtn = document.querySelector('#showAllBtn');
 const newInput = document.querySelector("#newInput");
 const newOutput = document.querySelector("#newOutput");
+const resultDiv = document.querySelector('#resultDiv');
+const resultBtn = document.querySelector('#resultBtn');
 
 
 // Get a reference to the database service
@@ -26,7 +28,7 @@ jodelRef.orderByKey().on("value", snapshot => {
   const jodelsObj = snapshot.val();
   console.log(jodelsObj);
   populateTrainingDiv(jodelsObj);
-  trainingData=Object.values(jodelsObj);
+  trainingData = Object.values(jodelsObj);
 });
 
 
@@ -113,6 +115,7 @@ const trainData = () => {
     //timeout: 15000 // the max number of milliseconds to train for --> number greater than 0
   });
   console.log('Training Complete!')
+  trainBtn.classList.remove('disabled');
   running = false;
   JSONTextArea.innerText = "";
   JSONTextArea.innerText = JSON.stringify(net.toJSON());
@@ -132,7 +135,10 @@ const testData = () => {
   const output = net.run(testText.value); // 'happy'
   console.log(output);
   setTimeout(() => {
-    brainOutput.innerText = output;
+    if (output === 'happy') brainOutput.innerText = "Happy 😃";
+    else if (output === 'sad') brainOutput.innerText = "Sad 😢";
+    else brainOutput.innerText = "Unable to decipher 🤖";
+
   }, 1000)
 
 }
@@ -166,21 +172,35 @@ trainBtn.addEventListener('click', () => {
 
 
 /// this will add a new jodel to the database
-addBtn.addEventListener('click', (e)=>{
+addBtn.addEventListener('click', (e) => {
   e.preventDefault();
   const input = newInput.value;
   const output = newOutput.value;
   const newPostKey = jodelRef.push().key;
   const newJodel = {};
-  newJodel[newPostKey]={
+  newJodel[newPostKey] = {
     input,
     output
   };
   console.log(newJodel);
-  newInput.value='';
+  newInput.value = '';
   return jodelRef.update(newJodel)
-    
+})
 
+const createSVG = () => {
+  let options = {
+    height:1500,
+    width:1500
+  }
+  if (JSONTextArea.value.length < 1000) {
+    brainOutput.innerText = "Train the Network First";
+    return;
+  }
+  net.fromJSON(JSON.parse(JSONTextArea.value));
+  resultDiv.innerHTML=brain.utilities.toSVG(net,options);
+}
 
-
+resultBtn.addEventListener("click",()=>{
+  resultDiv.innerHTML="";
+  createSVG();
 })

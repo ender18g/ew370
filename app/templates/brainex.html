@@ -39,7 +39,7 @@
 
 <div class="container my-3 text-center">
   <label for="iterations">Training Iterations:</label>
-  <input name='iterations' value='600' type="text" id="iterationsInput">
+  <input name='iterations' value='1000' type="text" id="iterationsInput">
   <button id="trainBtn" class="btn btn-danger">Train Network</button>
   <div class="row my-3">
     <div class="input-group mb-3">
@@ -55,11 +55,18 @@
   <h1 id='brainOutput' class='text-warning'></h1>
   <h4 id='counter' class='text-primary'></h4>
   <textarea id="JSONTextArea" cols="100" rows="10">Insert pre-trained JSON net here</textarea>
+  <br>
+  <button id="resultBtn" class="btn btn-success" type="button">View Network Image</button>
+  <div class="d-flex justify-content-center" id="resultDiv">
+  
+  </div>
+
 </div>
 
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/static/brain-examples/brain-browser.min.js"></script>
+<script src="/static/brain-examples/to-svg.js"></script>
 <script src="/static/brain-examples/brainJS.js"></script>
 
 
