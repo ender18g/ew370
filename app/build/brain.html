@@ -150,6 +150,10 @@
   <h4 id='counter' class='text-primary'></h4>
   <textarea id="JSONTextArea" cols="100" rows="10" placeholder="Insert pre-trained JSON net here"></textarea>
   <br>
+  <button class="btn btn-primary" href="static/trainedNet_2.txt"
+  
+  onclick="fillModel()" >Load a pretrained model</button>
+  
   <button id="resultBtn" class="btn btn-success" type="button">View Network Image</button>
   <div class="d-flex justify-content-center" id="resultDiv">
   
@@ -162,7 +166,16 @@
 <script src="static/brain-examples/brain-browser.min.js"></script>
 <script src="static/brain-examples/to-svg.js"></script>
 <script src="static/brain-examples/brainJS.js"></script>
+<script>
+const fillModel=()=>{
+  axios.get("static/trainedNet_2.txt")
+  .then((res)=>{
+    console.log(res)
+    document.querySelector('#JSONTextArea').value=JSON.stringify(res.data);
+  })
+}
 
+</script>
 
 
     </div>
