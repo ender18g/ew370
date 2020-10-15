@@ -136,6 +136,8 @@ const trainData = () => {
 	trainBtn.classList.remove('disabled');
 	trainBtn.innerText = 'Train';
 	running = false;
+	labelData = true;
+	populateTrainingDiv(recentDataObj);
 	JSONTextArea.innerText = '';
 	JSONTextArea.innerText = JSON.stringify(net.toJSON());
 	testData();
