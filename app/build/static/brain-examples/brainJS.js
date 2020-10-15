@@ -20,6 +20,8 @@ const resultDiv = document.querySelector('#resultDiv');
 const resultBtn = document.querySelector('#resultBtn');
 const modalBtn = document.querySelector('#modalBtn');
 const modalBody = document.querySelector('.modal-body');
+let recentDataObj = {};
+let labelData = false;
 
 // Get a reference to the database service
 const dbRef = firebase.database().ref();
@@ -27,7 +29,7 @@ const jodelRef = dbRef.child('jodels');
 ///create the table from snapshot
 jodelRef.orderByKey().on('value', (snapshot) => {
 	const jodelsObj = snapshot.val();
-	console.log(jodelsObj);
+	recentDataObj = jodelsObj;
 	populateTrainingDiv(jodelsObj);
 	trainingData = Object.values(jodelsObj);
 });
@@ -36,6 +38,8 @@ jodelRef.orderByKey().on('value', (snapshot) => {
 
 //Populate all of the comments in a table
 const populateTrainingDiv = (data) => {
+	let correct = 0;
+	let incorrect = 0;
 	trainingDiv.innerHTML = '';
 	let newElement = document.createElement('table');
 	newElement.classList.add('table-striped', 'table');
@@ -43,7 +47,8 @@ const populateTrainingDiv = (data) => {
     <thead>
     <tr>
       <th scope="col">Input</th>
-      <th scope="col">Labeled Output</th>
+      <th scope="col">Human Label</th>
+      <th scope="col">Machine Learning Label</th>
       <th scope="col">Remove</th>
     </tr>
     </thead>
@@ -53,25 +58,40 @@ const populateTrainingDiv = (data) => {
 	//   data = data.slice(0, commentsPerPage);
 	// }
 	for (let c in data) {
-		let addClass = 'text-success';
-		if (data[c].output === 'sad') addClass = 'text-danger';
+		const humanLabel = data[c].output;
+		let machineLabel = '';
+		if (labelData) {
+			machineLabel = calculateOutput(data[c].input);
+			humanLabel === machineLabel ? (correct += 1) : (incorrect += 1);
+		}
 		newHTML =
 			`
-      <tr">
-      <td scope="row" class="inputCell" >${data[c].input}</td>
-      <td class="font-weight-bold ${addClass}">${data[c].output}</td>
+      <tr>
+      <td scope="row" class="inputCell">
+      ${labelData
+			? humanLabel === machineLabel
+				? "<span class='iconSpan mr-4'>✅</span>"
+				: "<span class='iconSpan mr-4'>❌</span>"
+			: ''}
+        ${data[c].input}</td>
+      <td class="font-weight-bold ${humanLabel === 'sad' ? 'text-danger' : 'text-success'}">${humanLabel}</td>
+      <td class="font-weight-bold ${machineLabel === 'sad'
+			? 'text-danger'
+			: machineLabel === 'happy' ? 'text-success' : 'text-warning'}">${machineLabel}</td>
       <td class="remove_icon font-weight-bold text-danger" commentID="${c}">X</td>
       </tr>` + newHTML;
 	}
 	newHTML += '</tbody>';
 	newElement.innerHTML = newHTML;
 	trainingDiv.append(newElement);
+	brainOutput.innerHTML = `<pre>${correct} ✅     ${incorrect} ❌     ${(correct / (correct + incorrect)).toFixed(
+		2
+	)} %</pre>`;
 
 	// add a listener for the delete comment button
 	document.querySelectorAll('.remove_icon').forEach((item) => {
 		item.addEventListener('click', (event) => {
 			i = item.getAttribute('commentID');
-			console.log(i);
 			if (hashCode(newInput.value) === 1395200157) {
 				jodelRef.child(i).remove();
 			}
@@ -81,14 +101,13 @@ const populateTrainingDiv = (data) => {
 	document.querySelectorAll('.inputCell').forEach((item) => {
 		item.addEventListener('click', (event) => {
 			i = item.innerText;
-			console.log(i);
 			testText.value = i;
 			testBtn.click();
 		});
 	});
-
-	//train the data
 };
+
+//train the data
 const trainData = () => {
 	if (running) {
 		console.log('already running train');
@@ -102,7 +121,7 @@ const trainData = () => {
 	net.train(trainingData, {
 		//   // Defaults values --> expected validation
 		iterations: iterations, // the maximum times to iterate the training data --> number greater than 0
-		errorThresh: 0.005, // the acceptable error percentage from training data --> number between 0 and 1
+		errorThresh: 0.07, // the acceptable error percentage from training data --> number between 0 and 1
 		log: true, // true to use console.log, when a function is supplied it is used --> Either true or a function
 		logPeriod: 100, // iterations between logging out --> number greater than 0
 		//   // learningRate: 0.3, // scales with delta to effect training rate --> number between 0 and 1
@@ -115,6 +134,7 @@ const trainData = () => {
 	});
 	console.log('Training Complete!');
 	trainBtn.classList.remove('disabled');
+	trainBtn.innerText = 'Train';
 	running = false;
 	JSONTextArea.innerText = '';
 	JSONTextArea.innerText = JSON.stringify(net.toJSON());
@@ -123,7 +143,6 @@ const trainData = () => {
 
 //test the data in the test input box
 const testData = () => {
-	brainOutput.innerText = 'Evaluating..';
 	if (JSONTextArea.value.length < 1000) {
 		modalBody.innerText = 'Train the Network First';
 		modalBtn.click();
@@ -133,7 +152,6 @@ const testData = () => {
 	brainOutput.innerText = '';
 	console.log('running test');
 	const output = net.run(testText.value); // 'happy'
-	console.log(output);
 	setTimeout(() => {
 		if (output === 'happy') modalBody.innerText = 'Happy 😃';
 		else if (output === 'sad') modalBody.innerText = 'Sad 😢';
@@ -150,7 +168,6 @@ testBtn.addEventListener('click', () => {
 //make train button run the training
 trainBtn.addEventListener('click', () => {
 	trainBtn.innerText = 'Training...';
-	console.log(this);
 	counter.innerText = 'This will take up to 15 minutes..';
 	trainBtn.classList.add('disabled');
 	setTimeout(trainData, 200);
@@ -174,14 +191,17 @@ addBtn.addEventListener('click', (e) => {
 		return false;
 	}
 	const output = newOutput.value;
+	if (!output) {
+		return false;
+	}
 	const newPostKey = jodelRef.push().key;
 	const newJodel = {};
 	newJodel[newPostKey] = {
 		input,
 		output
 	};
-	console.log(newJodel);
 	newInput.value = '';
+	newOutput.value = '';
 	return jodelRef.update(newJodel);
 });
 
@@ -208,3 +228,22 @@ const hashCode = (s) =>
 		a = (a << 5) - a + b.charCodeAt(0);
 		return a & a;
 	}, 0);
+
+const calculateOutput = (t) => {
+	if (JSONTextArea.value.length < 1000) {
+		return 'No model trained';
+	}
+	const output = net.run(t); // 'happy'
+	if (output === 'happy') return 'happy';
+	else if (output === 'sad') return 'sad';
+	else return 'Unable to decipher';
+};
+
+const fillModel = () => {
+	axios.get('static/trainedNet_2.txt').then((res) => {
+		document.querySelector('#JSONTextArea').value = JSON.stringify(res.data);
+		net.fromJSON(JSON.parse(JSONTextArea.value));
+		labelData = true;
+		populateTrainingDiv(recentDataObj);
+	});
+};

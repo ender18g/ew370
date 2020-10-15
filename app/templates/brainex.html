@@ -38,6 +38,7 @@
     </div>
     <div class="col-2">
       <select id="newOutput" name="output" type="text" class="custom-select form-control" placeholder="output">
+        <option value="">-</option>
         <option value="happy">happy</option>
         <option value="sad">sad</option>
       </select>
@@ -62,7 +63,7 @@
 
 <div class="container my-3 text-center">
   <label for="iterations">Training Iterations:</label>
-  <input name='iterations' value='1000' type="text" id="iterationsInput">
+  <input name='iterations' value='500' type="text" id="iterationsInput">
   <button id="trainBtn" class="btn btn-danger">Train Network</button>
   <div class="row my-3">
     <div class="input-group mb-3">
@@ -75,13 +76,13 @@
 
 
   </div>
-  <h1 id='brainOutput' class='text-warning'></h1>
+  <h3 id='brainOutput' class='text-primary'></h1>
   <h4 id='counter' class='text-primary'></h4>
   <textarea id="JSONTextArea" cols="100" rows="10" placeholder="Insert pre-trained JSON net here"></textarea>
   <br>
   <button class="btn btn-primary" href="static/trainedNet_2.txt"
   
-  onclick="fillModel()" >Load a pretrained model</button>
+  onclick="fillModel()" >Load a pretrained model & Evaluate all Jodels</button>
   
   <button id="resultBtn" class="btn btn-success" type="button">View Network Image</button>
   <div class="d-flex justify-content-center" id="resultDiv">
@@ -95,15 +96,6 @@
 <script src="static/brain-examples/brain-browser.min.js"></script>
 <script src="static/brain-examples/to-svg.js"></script>
 <script src="static/brain-examples/brainJS.js"></script>
-<script>
-const fillModel=()=>{
-  axios.get("static/trainedNet_2.txt")
-  .then((res)=>{
-    console.log(res)
-    document.querySelector('#JSONTextArea').value=JSON.stringify(res.data);
-  })
-}
 
-</script>
 
 {% endblock %}
